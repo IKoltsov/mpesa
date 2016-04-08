@@ -1,0 +1,73 @@
+READ ME
+--------
+Before being onboarded to broker, the following must exist
+
+-Approval from MPESA business team for B2C transaction
+
+-Connectivity to both production and test broker.Connectivity can be through:-
+		*VPN
+		*Extranet
+		*Point to Point (Safaricom MPLS/KDN/JTL)
+		
+-Ensure the zipped file has the below files for B2C
+
+	*3rd party_Safaricom_B2C_UAT V1.1: This has the testcases that you need to conduct internally with relevant stakeholders in your company and need to be filled as passed/successful or failed/unsuccessful.Once filled, scan it nad have it signed and stamped internally by the testers and shared the signed copy with safaricom.
+	
+	*Broker_Certificate_for_Encrypting_Test_Initiator_password: This is used to encryptthe testbed initiator password which will be used in your request on the securityCredential parameter.
+	
+	*Broker_Certificates_For 2way SSL (Prod and testbed): This has both production and test broker cert to be used in 2 way ssl. Broker will be presenting this cert in 2 way ssl negotiation.
+	
+	*Certificate Generation Process for MPESA Broker - 3rd Party Info Pack: This file enlist the requirements when generating CSR.
+	
+	*Developing B2C interface-v1.5: This file has the interface description for various B2C interfaces e.g. GenericAPIRequest and GenericAPIResult.
+	
+	*Prod_Cert_For_Encrypting_ Initiator_Paasword: this has certificate for encrypting production initiator password which will be used in your request on the securityCredential parameter.
+	
+	*WSDL: Tghese are different WSDL files for B2C interfaces
+	
+	
+		
+		
+Testing Steps
+---------------
+1. Testing involve first sharing telnet output for both production and testbed IP and ports
+
+2.Sending GenericAPI Request to broker on http end point
+
+3.Confirming that you are able to successful post request and you are able to get a successful acknowledgement from broker test bed.
+
+4.You have configured Callback URL (ResultURL) in your request to receive GenericAPIResult from broker.The callback URL should be listening on http port say X. This informs your application if MPESA did succussfully process your request or your request was  not successfully processed.
+
+5.Generate CSR (Certificate signing Request) with key length of 2048 and share with safaricom for signing.(INVAS@Safaricom.co.ke)
+
+6. Once you have the signed cert,configure broker cert and the signed cert in your server.
+
+7. change the listening port (port X)on step 4 to https.
+
+8.  post same request used on step 3 but using https end pont and ensure the callbackURL(ResultURL) in your request is listening on https.
+
+9. confirm if you can successfully post on https end point and get genericAPIResult on your https callback URL.
+
+10. In case whatever you are receiviong on the callback URL is not a success, the error received need to be corrected till when MPESA returns a success.
+
+11.Assuming step 10 is successful, do UAT with your internal team and fill in the UAT document in the startup kit.Have it signed and share with Safaricom.
+
+12. Safaricom will then use the signed/stamped UAT form to move you to production. Ensure you share the below information to be used for migration
+	*Your production server source IP
+	*Your production short code 
+	*MPESA portal username to be given the role of resetting initiator password.
+	
+
+
+Escalation procedure
+---------------------
+-Any escalation on TEST BROKER, should be channeled to FSPlanning@Safaricom.co.ke or call 0722005031
+-Any escalation on PRODUCTION BROKER or Connectivity should be send to VAS-SMS-MMS@Safaricom.co.ke or VAS-SUPPORT2@Safaricom.co.ke or call (0722004526,0722004528,0722005629,0722004603)
+-Any Escalations on production MPESA related errors or Role assignment should be send to MPESAITSupport@Safaricom.co.ke
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+Cert installation procedure for IIS
+=========================================
+
+
+## Step 01 - Import the ROOT and Intermediate authorities to ca - ORDER matters (Root,Policy,Issuer)
+
+
+## Step 02
+cd /usr/jdk/jdk1.7.0_21/jre/bin
+keytool -genkey -alias <name>  -keyalg RSA -keysize 2048 –keystore <name>.jks  (generates key and jks)
+keytool -certreq -alias <name>   -keyalg RSA -file <name>  .csr -keystore <name> .jks(generate the csr from the key in jks, above command)
+
+## Step 03 - add Root and intermediate authorities into keystore
+
+keytool -importcert -file LABROOTCA01.cer -keystore <name>  .jks -alias "<name>  "
+keytool -importcert -file LABPOLICYCA01.cer -keystore <name>  .jks -alias "<name>  "
+keytool -importcert -file LABISS -keystore <name>  .jks -alias "<name>  "
+
+## Step 04 - add our signed certificate into jks
+keytool -importcert -file <name>  .cer -keystore <name>  .jks -alias "<name> "
+
+##Step 05-Convert jks file to pfx
+http://teddyhai.blogspot.com/2009/06/how-to-convert-java-jks-keystore-to.html
+
+##Step 06 – Import pfx file into IIS
+https://www.tbs-certificates.co.uk/FAQ/en/634.html
+
+
