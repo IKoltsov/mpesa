@@ -1,0 +1,14 @@
+{
+    "name": "leyo/mpesa",
+    "description": "Mpesa G2 Api Laravel Negotiator",
+    "type": "Mobile money integration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Le-Yo",
+            "email": "lenykoskey@yahoo.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
