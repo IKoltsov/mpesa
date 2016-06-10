@@ -32,7 +32,7 @@ class MpesaController extends Controller
             $real_pass = base64_encode(hash('sha256', SPID . "" . PASSWORD . "" . $timestamp_));
             $securityCredential = self::getSecurityCredential(initiator_pass);
             $rand = rand(123456, 654321);
-            $originId = spId . "_".initiator_username."_" . $rand;
+            $originId = SPID . "_".initiator_username."_" . $rand;
             $type = 2;
             $third_party_id = null;
             $reqTime = date('Y-m-d') . "T" . date('H:i:s') . ".0000521Z"; //2014-10-21T09:47:19.0000521Z
