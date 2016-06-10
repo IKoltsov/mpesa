@@ -6,7 +6,7 @@ composer require leyo/mpesa
 
 leyo\Mpesa\MpesaServiceProvider::class
 
-
+composer dump-autoload
 #MPESA Configs
 
 From the root:

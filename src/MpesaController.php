@@ -29,7 +29,7 @@ class MpesaController extends Controller
         $no = "254".substr($phone,-9);
 
         $timestamp_ = date("YdmHis");
-            $real_pass = base64_encode(hash('sha256', SPID . "" . password . "" . $timestamp_));
+            $real_pass = base64_encode(hash('sha256', SPID . "" . PASSWORD . "" . $timestamp_));
             $securityCredential = self::getSecurityCredential(initiator_pass);
             $rand = rand(123456, 654321);
             $originId = spId . "_".initiator_username."_" . $rand;
